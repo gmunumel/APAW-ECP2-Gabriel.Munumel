@@ -9,6 +9,10 @@ public class DriverResource {
 
     public static final String ID = "/{id}";
 
+    public String readDriver(int driverId) {
+    		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+    }
+    
     public void createDriver(String driverReference) throws DriverFieldInvalidException {
     		this.validateField(driverReference);
     		new DriverController().createDriver(driverReference);

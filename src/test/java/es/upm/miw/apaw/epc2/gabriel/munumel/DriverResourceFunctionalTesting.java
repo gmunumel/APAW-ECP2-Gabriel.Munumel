@@ -55,12 +55,28 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     } 
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test(expected = HttpException.class)
     public void testReadDriver() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
                 .expandPath("1").build();
         assertEquals("{\"id\":1,\"reference\":\"1234XYZ,\"phone\":\"666666666\"}", new HttpClientService().httpRequest(request).getBody());
+    }
+    
+    @Test(expected = HttpException.class)
+    public void testReadDriverNotInteger() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
+                .expandPath("AAA").build();
+        new HttpClientService().httpRequest(request).getBody();
+    }
+    
+    @Test(expected = HttpException.class)
+    public void testReadDriverNotFound() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
+                .expandPath("999").build();
+        new HttpClientService().httpRequest(request).getBody();
     }
 
 }

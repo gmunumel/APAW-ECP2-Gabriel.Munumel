@@ -16,7 +16,13 @@ public class Dispatcher {
 	}
 
 	public void doGet(HttpRequest request, HttpResponse response) {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+		try {
+			if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID)) {
+	            response.setBody(driverResource.readDriver(Integer.valueOf(request.paths()[1])).toString());
+			}
+		} catch (Exception e) {
+            responseError(response, e);
+        }
 	}
 
 	public void doPost(HttpRequest request, HttpResponse response) {
