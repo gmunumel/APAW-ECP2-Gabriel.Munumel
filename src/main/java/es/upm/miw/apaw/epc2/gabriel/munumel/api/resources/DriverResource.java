@@ -9,29 +9,37 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverIdNot
 
 public class DriverResource {
 
-    public static final String DRIVERS = "drivers";
+	public static final String DRIVERS = "drivers";
 
-    public static final String ID = "/{id}";
+	public static final String ID = "/{id}";
 
-    public DriverDto readDriver(int driverId) throws DriverIdNotFoundException {
-    		Optional<DriverDto> optional = new DriverController().readDriver(driverId);
-    		return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
-    }
-    
-    public void createDriver(String driverReference) throws DriverFieldInvalidException {
-    		this.validateField(driverReference);
-    		new DriverController().createDriver(driverReference);
-    }
-    
-    public void createDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
-    		this.validateField(driverReference);
-    		new DriverController().createDriver(driverReference, driverPhone);
-    }
-    
-    private void validateField(String field) throws DriverFieldInvalidException {
-        if (field == null || field.isEmpty() || field.split(":")[0].isEmpty()) { 
-            throw new DriverFieldInvalidException(field);
-        }
-    }
+	public DriverDto readDriver(int driverId) throws DriverIdNotFoundException {
+		Optional<DriverDto> optional = new DriverController().readDriver(driverId);
+		return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
+	}
+
+	public void createDriver(String driverReference) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().createDriver(driverReference);
+	}
+
+	public void createDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().createDriver(driverReference, driverPhone);
+	}
+
+	public void updateDriver(String driverReference) {
+		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+	}
+
+	public void updateDriver(String driverReference, Long driverPhone) {
+		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+	}
+
+	private void validateField(String field) throws DriverFieldInvalidException {
+		if (field == null || field.isEmpty() || field.split(":")[0].isEmpty()) {
+			throw new DriverFieldInvalidException(field);
+		}
+	}
 
 }
