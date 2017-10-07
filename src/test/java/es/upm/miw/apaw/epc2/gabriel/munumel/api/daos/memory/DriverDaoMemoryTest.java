@@ -14,7 +14,7 @@ public class DriverDaoMemoryTest {
     private Driver driver;
 
     @Before
-    public void before() {
+    public void before() { 
         DaoFactory.setFactory(new DaoMemoryFactory());
         driver = new Driver("1234GHF", 666666666L);
         DaoFactory.getFactory().getDriverDao().create(driver);
