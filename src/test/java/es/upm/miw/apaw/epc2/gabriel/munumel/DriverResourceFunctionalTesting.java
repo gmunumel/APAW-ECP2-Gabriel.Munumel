@@ -25,12 +25,12 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test
-    public void testCreateDriver() {
+    @Test(expected = HttpException.class)
+    public void testCreateDriver() { 
         this.createDriverReferencePhone();
     }
     
-    @Test
+    @Test(expected = HttpException.class)
     public void createDriverReference() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).body("1234XYZ").build();
         new HttpClientService().httpRequest(request);

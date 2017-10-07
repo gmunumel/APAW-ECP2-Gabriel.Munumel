@@ -1,5 +1,6 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.resources;
 
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers.DriverController;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverFieldInvalidException;
 
 public class DriverResource {
@@ -10,10 +11,12 @@ public class DriverResource {
 
     public void createDriver(String driverReference) throws DriverFieldInvalidException {
     		this.validateField(driverReference);
+    		new DriverController().createDriver(driverReference);
     }
     
     public void createDriver(String driverReference, String driverPhone) throws DriverFieldInvalidException {
     		this.validateField(driverReference);
+    		new DriverController().createDriver(driverReference, driverPhone);
     }
     
     private void validateField(String field) throws DriverFieldInvalidException {
