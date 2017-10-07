@@ -77,6 +77,29 @@ public class DriverResourceFunctionalTesting {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
                 .expandPath("999").build();
         new HttpClientService().httpRequest(request).getBody();
+    }  
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUpdateDriver() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.PATCH).path(DriverResource.DRIVERS).body("XYDH1234:777777777").path(DriverResource.ID)
+                .expandPath("1").build();
+        new HttpClientService().httpRequest(request).getBody();
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUpdateDriverNotInteger() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.PATCH).path(DriverResource.DRIVERS).body("XYDH1234:777777777").path(DriverResource.ID)
+                .expandPath("AAA").build();
+        new HttpClientService().httpRequest(request).getBody();
+    }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUpdateDriverNotFound() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.PATCH).path(DriverResource.DRIVERS).body("XYDH1234:777777777").path(DriverResource.ID)
+                .expandPath("999").build();
+        new HttpClientService().httpRequest(request).getBody();
+    }  
 }
