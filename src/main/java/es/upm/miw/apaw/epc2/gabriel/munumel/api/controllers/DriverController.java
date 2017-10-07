@@ -19,6 +19,14 @@ public class DriverController {
 	public void createDriver(String driverReference, Long driverPhone) {
 		DaoFactory.getFactory().getDriverDao().create(new Driver(driverReference, driverPhone));
 	}
+	
+	public void updateDriver(String driverReference) {
+		throw new java.lang.UnsupportedOperationException("Not supported yet.");
+	}
+
+	public void updateDriver(String driverReference, Long driverPhone) {
+		throw new java.lang.UnsupportedOperationException("Not supported yet.");
+	}
 
 	public Optional<DriverDto> readDriver(int driverId) {
 		if (existDriverId(driverId)) {
@@ -26,5 +34,5 @@ public class DriverController {
         } else {
             return Optional.empty();
         }
-	}
+	}  
 }

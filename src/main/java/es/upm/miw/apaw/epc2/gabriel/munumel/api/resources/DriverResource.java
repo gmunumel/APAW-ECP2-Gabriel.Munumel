@@ -28,12 +28,14 @@ public class DriverResource {
 		new DriverController().createDriver(driverReference, driverPhone);
 	}
 
-	public void updateDriver(String driverReference) {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+	public void updateDriver(String driverReference) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().updateDriver(driverReference);
 	}
 
-	public void updateDriver(String driverReference, Long driverPhone) {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+	public void updateDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().updateDriver(driverReference);
 	}
 
 	private void validateField(String field) throws DriverFieldInvalidException {
