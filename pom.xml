@@ -29,8 +29,7 @@
 		<!-- Logs -->
 		<log4j.version>2.3</log4j.version>
 		<!-- Data Base -->
-		<database.driver>com.mysql.jdbc.Driver</database.driver>
-		<database.url>jdbc:mysql://localhost:3306/eco</database.url>
+		<integration.test.skip>false</integration.test.skip>
 	</properties>
 
 	<profiles>
@@ -46,8 +45,6 @@
 			</activation>
 			<properties>
 				<logs.level.root>debug</logs.level.root>
-				<database.user>root</database.user>
-				<database.password></database.password>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=preproduction -->
@@ -61,8 +58,7 @@
 			</activation>
 			<properties>
 				<logs.level.root>info</logs.level.root>
-				<database.user>myUser</database.user>
-				<database.password>myPass</database.password>
+				<integration.test.skip>true</integration.test.skip>
 			</properties>
 			<build>
 				<plugins>
@@ -90,8 +86,6 @@
 			</activation>
 			<properties>
 				<logs.level.root>error</logs.level.root>
-				<database.user>otherUser</database.user>
-				<database.password>otherPass</database.password>
 			</properties>
 		</profile>
 	</profiles>
@@ -173,9 +167,9 @@
 
 	<developers>
 		<developer>
-			<name>Name</name>
+			<name>Gabriel Muñumel</name>
 			<id>Id</id>
-			<email>mail@gmail.com</email>
+			<email>gabriel.munumel.mesa@alumnos.upm.es</email>
 			<organization>MIW UPM</organization>
 			<roles>
 				<role>Architect</role>
