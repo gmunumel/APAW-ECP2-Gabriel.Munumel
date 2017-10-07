@@ -9,29 +9,41 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverIdNot
 
 public class DriverResource {
 
-    public static final String DRIVERS = "drivers";
+	public static final String DRIVERS = "drivers";
 
-    public static final String ID = "/{id}";
+	public static final String ID = "/{id}";
 
-    public DriverDto readDriver(int driverId) throws DriverIdNotFoundException {
-    		Optional<DriverDto> optional = new DriverController().readDriver(driverId);
-    		return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
-    }
-    
-    public void createDriver(String driverReference) throws DriverFieldInvalidException {
-    		this.validateField(driverReference);
-    		new DriverController().createDriver(driverReference);
-    }
-    
-    public void createDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
-    		this.validateField(driverReference);
-    		new DriverController().createDriver(driverReference, driverPhone);
-    }
-    
-    private void validateField(String field) throws DriverFieldInvalidException {
-        if (field == null || field.isEmpty() || field.split(":")[0].isEmpty()) { 
-            throw new DriverFieldInvalidException(field);
-        }
-    }
+	public DriverDto readDriver(int driverId) throws DriverIdNotFoundException {
+		Optional<DriverDto> optional = new DriverController().readDriver(driverId);
+		return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
+	}
+
+	public void createDriver(String driverReference) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().createDriver(driverReference);
+	}
+
+	public void createDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
+		this.validateField(driverReference);
+		new DriverController().createDriver(driverReference, driverPhone);
+	}
+
+	public void updateDriver(int driverId, String driverReference) throws DriverIdNotFoundException, DriverFieldInvalidException {
+		this.readDriver(driverId);
+		this.validateField(driverReference);
+		new DriverController().updateDriver(driverId, driverReference);
+	}
+
+	public void updateDriver(int driverId, String driverReference, Long driverPhone) throws DriverIdNotFoundException, DriverFieldInvalidException {
+		this.readDriver(driverId);
+		this.validateField(driverReference);
+		new DriverController().updateDriver(driverId, driverReference, driverPhone);
+	}
+
+	private void validateField(String field) throws DriverFieldInvalidException {
+		if (field == null || field.isEmpty() || field.split(":")[0].isEmpty()) {
+			throw new DriverFieldInvalidException(field);
+		}
+	}
 
 }

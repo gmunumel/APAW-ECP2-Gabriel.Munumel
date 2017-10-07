@@ -19,6 +19,14 @@ public class DriverController {
 	public void createDriver(String driverReference, Long driverPhone) {
 		DaoFactory.getFactory().getDriverDao().create(new Driver(driverReference, driverPhone));
 	}
+	
+	public void updateDriver(int driverId, String driverReference) {
+		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference));
+	}
+
+	public void updateDriver(int driverId, String driverReference, Long driverPhone) {
+		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference, driverPhone));
+	}
 
 	public Optional<DriverDto> readDriver(int driverId) {
 		if (existDriverId(driverId)) {
@@ -26,5 +34,5 @@ public class DriverController {
         } else {
             return Optional.empty();
         }
-	}
+	}  
 }
