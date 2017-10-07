@@ -9,7 +9,7 @@ public class DriverController {
     		DaoFactory.getFactory().getDriverDao().create(new Driver(driverReference));
     }
     
-    public void createDriver(String driverReference, String driverPhone) {
+    public void createDriver(String driverReference, Long driverPhone) {
     		DaoFactory.getFactory().getDriverDao().create(new Driver(driverReference, driverPhone));
     }
 

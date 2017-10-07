@@ -16,9 +16,9 @@ public class Driver {
         this.phone = null;
     }
 
-    public Driver(String reference, String phone) {
+    public Driver(String reference, Long phone) {
         this.reference = reference;
-        this.phone = Long.parseLong(phone);
+        this.phone = phone;
     }
 
     public int getId() {

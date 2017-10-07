@@ -14,7 +14,7 @@ public class DriverResource {
     		new DriverController().createDriver(driverReference);
     }
     
-    public void createDriver(String driverReference, String driverPhone) throws DriverFieldInvalidException {
+    public void createDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
     		this.validateField(driverReference);
     		new DriverController().createDriver(driverReference, driverPhone);
     }

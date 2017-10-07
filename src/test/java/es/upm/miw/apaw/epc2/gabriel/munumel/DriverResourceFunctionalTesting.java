@@ -16,7 +16,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpRequestBuilder;
 public class DriverResourceFunctionalTesting {
 
     @Before
-    public void before() {
+    public void before() { 
         DaoFactory.setFactory(new DaoMemoryFactory());
     }
 
@@ -25,12 +25,12 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test(expected = HttpException.class)
+    @Test
     public void testCreateDriver() { 
         this.createDriverReferencePhone();
     }
     
-    @Test(expected = HttpException.class)
+    @Test
     public void createDriverReference() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).body("1234XYZ").build();
         new HttpClientService().httpRequest(request);

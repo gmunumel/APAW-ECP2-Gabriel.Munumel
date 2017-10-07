@@ -10,6 +10,9 @@ public class DaoMemoryFactory extends DaoFactory {
 
 	@Override
     public DriverDao getDriverDao() {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+		if (driverDao == null) {
+			driverDao = new DriverDaoMemory();
+        }
+        return driverDao;
     }
 }
