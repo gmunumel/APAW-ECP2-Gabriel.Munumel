@@ -6,6 +6,7 @@ import org.junit.Test;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.memory.DaoMemoryFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.DriverResource;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverFieldInvalidException;
 import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpClientService;
 import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpException;
 import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpMethod;
@@ -24,24 +25,30 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testCreateDriver() {
         this.createDriverReferencePhone();
     }
+    
+    @Test
+    public void createDriverReference() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).body("1234XYZ").build();
+        new HttpClientService().httpRequest(request);
+    }
 
-    @Test(expected = UnsupportedOperationException.class)
+    @Test(expected = HttpException.class)
     public void testCreateDriverReferenceEmpty() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).body("").build();
         new HttpClientService().httpRequest(request);
     }
 
-    @Test(expected = UnsupportedOperationException.class)
+    @Test(expected = HttpException.class)
     public void testCreateWithoutDriverReference() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).build();
         new HttpClientService().httpRequest(request);
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test(expected = HttpException.class)
     public void testCreateDriverReferenceEmptyPhoneNotEmpty() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS).body(":666666666").build();
         new HttpClientService().httpRequest(request);
