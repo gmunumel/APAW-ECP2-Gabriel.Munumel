@@ -1,7 +1,11 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.resources;
 
+import java.util.Optional;
+
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers.DriverController;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverFieldInvalidException;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverIdNotFoundException;
 
 public class DriverResource {
 
@@ -9,8 +13,9 @@ public class DriverResource {
 
     public static final String ID = "/{id}";
 
-    public String readDriver(int driverId) {
-    		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+    public DriverDto readDriver(int driverId) throws DriverIdNotFoundException {
+    		Optional<DriverDto> optional = new DriverController().readDriver(driverId);
+    		return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
     }
     
     public void createDriver(String driverReference) throws DriverFieldInvalidException {
