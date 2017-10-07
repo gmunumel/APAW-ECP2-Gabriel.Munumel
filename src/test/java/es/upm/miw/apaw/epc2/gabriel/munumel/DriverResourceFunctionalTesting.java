@@ -79,10 +79,18 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request).getBody();
     }  
     
-    @Test(expected = HttpException.class)
+    @Test
     public void testUpdateDriver() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.PATCH).path(DriverResource.DRIVERS).body("XYDH1234:777777777").path(DriverResource.ID)
+                .expandPath("1").build();
+        new HttpClientService().httpRequest(request).getBody();
+    }
+    
+    @Test
+    public void testUpdateDriverReference() {
+        this.testCreateDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.PATCH).path(DriverResource.DRIVERS).body("XYDH1234:").path(DriverResource.ID)
                 .expandPath("1").build();
         new HttpClientService().httpRequest(request).getBody();
     }

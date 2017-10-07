@@ -28,14 +28,16 @@ public class DriverResource {
 		new DriverController().createDriver(driverReference, driverPhone);
 	}
 
-	public void updateDriver(String driverReference) throws DriverFieldInvalidException {
+	public void updateDriver(int driverId, String driverReference) throws DriverIdNotFoundException, DriverFieldInvalidException {
+		this.readDriver(driverId);
 		this.validateField(driverReference);
-		new DriverController().updateDriver(driverReference);
+		new DriverController().updateDriver(driverId, driverReference);
 	}
 
-	public void updateDriver(String driverReference, Long driverPhone) throws DriverFieldInvalidException {
+	public void updateDriver(int driverId, String driverReference, Long driverPhone) throws DriverIdNotFoundException, DriverFieldInvalidException {
+		this.readDriver(driverId);
 		this.validateField(driverReference);
-		new DriverController().updateDriver(driverReference);
+		new DriverController().updateDriver(driverId, driverReference, driverPhone);
 	}
 
 	private void validateField(String field) throws DriverFieldInvalidException {

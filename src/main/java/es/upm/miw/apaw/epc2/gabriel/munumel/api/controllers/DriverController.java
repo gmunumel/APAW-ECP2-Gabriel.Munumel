@@ -20,12 +20,12 @@ public class DriverController {
 		DaoFactory.getFactory().getDriverDao().create(new Driver(driverReference, driverPhone));
 	}
 	
-	public void updateDriver(String driverReference) {
-		throw new java.lang.UnsupportedOperationException("Not supported yet.");
+	public void updateDriver(int driverId, String driverReference) {
+		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference));
 	}
 
-	public void updateDriver(String driverReference, Long driverPhone) {
-		throw new java.lang.UnsupportedOperationException("Not supported yet.");
+	public void updateDriver(int driverId, String driverReference, Long driverPhone) {
+		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference, driverPhone));
 	}
 
 	public Optional<DriverDto> readDriver(int driverId) {

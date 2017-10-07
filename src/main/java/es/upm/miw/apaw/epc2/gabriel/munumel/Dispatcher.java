@@ -51,11 +51,15 @@ public class Dispatcher {
 		try { 
 			if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID)) {
 				if (request.getBody().contains(":")) {
-					String reference = request.getBody().split(":")[0]; // body="reference:phone"
-					String phone = request.getBody().split(":")[1];
-					driverResource.updateDriver(reference, Long.parseLong(phone));
+					String[] split = request.getBody().split(":");
+					String reference = split[0]; // body="reference:phone"
+					if (split.length == 2) {
+						String phone = request.getBody().split(":")[1];
+						driverResource.updateDriver(Integer.valueOf(request.paths()[1]), reference, Long.parseLong(phone));
+					} else 
+						driverResource.updateDriver(Integer.valueOf(request.paths()[1]), reference);		
 				} else
-					driverResource.updateDriver(request.getBody());
+					driverResource.updateDriver(Integer.valueOf(request.paths()[1]), request.getBody());
 				response.setStatus(HttpStatus.CREATED);
 			} else {
 				throw new RequestInvalidException(request.getPath());
