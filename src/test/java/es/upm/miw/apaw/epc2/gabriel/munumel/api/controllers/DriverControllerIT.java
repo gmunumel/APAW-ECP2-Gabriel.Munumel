@@ -1,7 +1,7 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,16 +21,13 @@ public class DriverControllerIT {
 
 	@Test
 	public void testCreateDriver() {
-		// TODO: not implemented yet
-		assertTrue(true);
-	}
-
+		assertEquals("2345HFJ", driverController.readDriver(1).get().getReference());
+		assertEquals(777777777L, driverController.readDriver(1).get().getPhone(), 0);
+	} 
+	
 	@Test
-	public void testCreateDriverOnlyReference() {
-		DriverController driverController = new DriverController();
-		driverController.createDriver("2345HFJ");
-		// TODO: not implemented yet
-		assertTrue(true);
-	}
+    public void testReadDriverNonExistId() {
+       assertFalse(driverController.readDriver(2).isPresent());
+    }
 
 }

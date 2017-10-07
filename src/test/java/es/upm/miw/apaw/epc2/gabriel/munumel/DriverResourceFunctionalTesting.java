@@ -55,7 +55,7 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     } 
     
-    @Test(expected = HttpException.class)
+    @Test
     public void testReadDriver() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
