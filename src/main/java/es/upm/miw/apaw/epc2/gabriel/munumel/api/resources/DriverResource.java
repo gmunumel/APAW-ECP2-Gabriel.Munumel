@@ -35,7 +35,7 @@ public class DriverResource {
 	}
 
 	public void updateDriver(int driverId, String driverReference, Long driverPhone) throws DriverIdNotFoundException, DriverFieldInvalidException {
-		this.getDriver(driverId);
+		this.getDriver(driverId);  
 		this.validateField(driverReference);
 		new DriverController().updateDriver(driverId, driverReference, driverPhone);
 	}

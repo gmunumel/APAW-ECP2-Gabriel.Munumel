@@ -12,7 +12,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.memory.DaoMemoryFactory;
 
 public class DriverControllerIT {  
 
-	private DriverController driverController;
+	private DriverController driverController;  
 
 	@Before
 	public void before() {
@@ -28,7 +28,7 @@ public class DriverControllerIT {
 	}
 
 	@Test
-	public void testReadDriverNonExistId() {
+	public void testGetDriverNonExistId() {
 		assertFalse(driverController.getDriver(2).isPresent());
 	}
 

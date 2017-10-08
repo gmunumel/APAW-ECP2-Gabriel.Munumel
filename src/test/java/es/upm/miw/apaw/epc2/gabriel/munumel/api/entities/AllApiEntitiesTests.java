@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	DriverTest.class
+	DriverTest.class,
+	VehicleTest.class
 })
 public class AllApiEntitiesTests {
 

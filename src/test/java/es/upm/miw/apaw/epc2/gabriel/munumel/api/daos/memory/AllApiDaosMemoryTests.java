@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    DriverDaoMemoryTest.class
+    DriverDaoMemoryTest.class,
+    VehicleDaoMemoryTest.class
 })
 public class AllApiDaosMemoryTests {
 
