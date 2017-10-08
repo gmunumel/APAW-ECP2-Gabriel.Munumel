@@ -1,5 +1,6 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
@@ -30,7 +31,12 @@ public class DriverController {
 	}
 	
 	public Optional<DriverVehicleListDto> driverVehicles(int driverId) {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+		if (existDriverId(driverId)) {
+            List<Integer> vehicleList = DaoFactory.getFactory().getVehicleDao().findValueByDriverId(driverId);
+            return Optional.of(new DriverVehicleListDto(DaoFactory.getFactory().getDriverDao().get(driverId), vehicleList));
+        } else {
+            return Optional.empty();
+        }
 	}
 
 	public Optional<DriverDto> getDriver(int driverId) {
