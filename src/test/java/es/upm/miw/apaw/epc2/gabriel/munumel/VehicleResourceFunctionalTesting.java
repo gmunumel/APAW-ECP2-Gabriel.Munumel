@@ -1,7 +1,5 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +29,7 @@ public class VehicleResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test(expected = HttpException.class)  
+    @Test
     public void testCreateVehicle() { 
         this.createVehicleBrandModelDriverIdEnum();
     }
@@ -54,6 +52,13 @@ public class VehicleResourceFunctionalTesting {
     public void testCreateVehicleDriverEmpty() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
         		.body("BMW:T1000::GASOLINE").build();
+        new HttpClientService().httpRequest(request);
+    }
+    
+    @Test(expected = HttpException.class)
+    public void testCreateVehicleDriverIdNotFound() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
+        		.body("BMW:T1000:999:GASOLINE").build();
         new HttpClientService().httpRequest(request);
     }
     

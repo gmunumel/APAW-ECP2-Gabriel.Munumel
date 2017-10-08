@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    DriverResourceFunctionalTesting.class
+    DriverResourceFunctionalTesting.class,
+    VehicleResourceFunctionalTesting.class
 })
 public class AllFunctionalTestings {
 
