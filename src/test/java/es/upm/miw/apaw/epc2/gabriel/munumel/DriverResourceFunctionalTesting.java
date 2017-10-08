@@ -65,7 +65,7 @@ public class DriverResourceFunctionalTesting {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS)
         		.path(DriverResource.ID).expandPath("1").build();
-        assertEquals("{\"id\":1,\"reference\":\"1234XYZ,\"phone\":\"666666666\"}", 
+        assertEquals("{\"id\":1,\"reference\":\"1234XYZ\",\"phone\":\"666666666\"}", 
         		new HttpClientService().httpRequest(request).getBody());
     }
     
@@ -117,7 +117,7 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request).getBody();
     }  
     
-    @Test(expected = HttpException.class)
+    @Test
     public void testGetDriverVehicles() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
@@ -126,12 +126,12 @@ public class DriverResourceFunctionalTesting {
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
         		.body("Mercedes:CLQ:1:DIESEL").build();
         new HttpClientService().httpRequest(request);
-        request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS)
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS) 
         		.path(DriverResource.ID_VEHICLES).expandPath("1").build();
         assertEquals("{{\"id\":1,\"reference\":\"1234XYZ\",\"phone\":\"666666666\"},"
         					+ "[{\"id\":1,\"brand\":\"BMW\",\"model\":\"T1000\",\"fuel\":\"GASOLINE\"},"
-        					+ "{\"id\":2,\"brand\":\"Mercedes\",\"model\":\"CLQ\",\"fuel\":\"DIESEL\"}]}", 
-        		new HttpClientService().httpRequest(request).getBody());
+        					+ " {\"id\":2,\"brand\":\"Mercedes\",\"model\":\"CLQ\",\"fuel\":\"DIESEL\"}]}", 
+        		new HttpClientService().httpRequest(request).getBody()); 
     }
 
     @Test(expected = HttpException.class)

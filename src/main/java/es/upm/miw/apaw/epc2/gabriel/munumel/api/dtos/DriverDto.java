@@ -43,9 +43,9 @@ public class DriverDto {
         this.phone = phone;
     }
 
-    @Override
+    @Override 
     public String toString() {
-        return "{\"id\":" + id + ",\"reference\":\"" + reference + ",\"phone\":\"" + phone + "\"}";
+        return "{\"id\":" + id + ",\"reference\":\"" + reference + "\",\"phone\":\"" + phone + "\"}";
     }
 
 }

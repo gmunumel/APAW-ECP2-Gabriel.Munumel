@@ -25,7 +25,9 @@ public class Dispatcher {
 				response.setBody(driverResource.getDriver(Integer.valueOf(request.paths()[1])).toString());
 			} else if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID_VEHICLES)) {
 				response.setBody(driverResource.getDriverVehicleList(Integer.valueOf(request.paths()[1])).toString());
-			}
+			} else {
+                throw new RequestInvalidException(request.getPath());
+            }
 		} catch (Exception e) {
 			responseError(response, e);
 		}
@@ -42,7 +44,7 @@ public class Dispatcher {
 					driverResource.createDriver(request.getBody());
 			} else if (request.isEqualsPath(VehicleResource.VEHICLES)) { // body="brand:model:driverId:fuel"
 				String brand = splitBy(0, request.getBody());
-				String model = splitBy(1, request.getBody());
+				String model = splitBy(1, request.getBody());  
 				String driverId = splitBy(2, request.getBody());
 				String fuel = splitBy(3, request.getBody());
 				vehicleResource.createVehicle(brand, model, Integer.parseInt(driverId), Fuel.valueOf(fuel));

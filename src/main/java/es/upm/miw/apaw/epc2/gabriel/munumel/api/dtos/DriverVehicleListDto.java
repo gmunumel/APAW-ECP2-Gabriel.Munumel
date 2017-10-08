@@ -3,26 +3,27 @@ package es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos;
 import java.util.List;
 
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Driver;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Vehicle;
 
 public class DriverVehicleListDto {
 
     private DriverDto driverDto;
 
-    private List<Integer> vehicleList;
+    private List<Vehicle> vehicleList;
 
-    public DriverVehicleListDto() {
+    public DriverVehicleListDto() { 
     }
 
-    public DriverVehicleListDto(Driver driver, List<Integer> vehicleList) {
+    public DriverVehicleListDto(Driver driver, List<Vehicle> vehicleList) {
     		driverDto = new DriverDto(driver);
         this.vehicleList = vehicleList;
     }
 
-    public DriverDto getDriverDto() {
+    public DriverDto getDriverDto() { 
         return driverDto;
     }
 
-    public List<Integer> getVehicleList() {
+    public List<Vehicle> getVehicleList() {
         return vehicleList;
     }
 

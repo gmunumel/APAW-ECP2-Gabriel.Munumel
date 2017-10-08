@@ -47,9 +47,8 @@ public class Vehicle {
 	}
 
 	@Override
-	public String toString() {
-		return "Vehicle [id=" + id + ", brand=" + brand + 
-				", model=" + model + ", driver=" + driver + ", fuel=" + fuel + "]";
+	public String toString() { 
+		return "{\"id\":" + id + ",\"brand\":\"" + brand + "\",\"model\":\"" + model + "\",\"fuel\":\"" + fuel + "\"}";
 	}
 
 }

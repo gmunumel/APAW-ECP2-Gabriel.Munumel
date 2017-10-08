@@ -7,6 +7,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverVehicleListDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Driver;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Vehicle;
 
 public class DriverController {
 
@@ -32,7 +33,7 @@ public class DriverController {
 	
 	public Optional<DriverVehicleListDto> driverVehicles(int driverId) {
 		if (existDriverId(driverId)) {
-            List<Integer> vehicleList = DaoFactory.getFactory().getVehicleDao().findValueByDriverId(driverId);
+            List<Vehicle> vehicleList = DaoFactory.getFactory().getVehicleDao().findVehiclesByDriverId(driverId);
             return Optional.of(new DriverVehicleListDto(DaoFactory.getFactory().getDriverDao().get(driverId), vehicleList));
         } else {
             return Optional.empty();
