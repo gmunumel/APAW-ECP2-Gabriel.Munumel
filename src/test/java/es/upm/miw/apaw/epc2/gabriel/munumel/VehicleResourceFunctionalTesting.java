@@ -53,7 +53,7 @@ public class VehicleResourceFunctionalTesting {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
         		.body("BMW:T1000::GASOLINE").build();
         new HttpClientService().httpRequest(request);
-    }
+    }  
     
     @Test(expected = HttpException.class)
     public void testCreateVehicleDriverIdNotFound() {

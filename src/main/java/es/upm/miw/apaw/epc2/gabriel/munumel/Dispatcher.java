@@ -23,6 +23,8 @@ public class Dispatcher {
 		try {
 			if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID)) {
 				response.setBody(driverResource.getDriver(Integer.valueOf(request.paths()[1])).toString());
+			} else if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID_VEHICLES)) {
+				response.setBody(driverResource.getDriverVehicleList(Integer.valueOf(request.paths()[1])).toString());
 			}
 		} catch (Exception e) {
 			responseError(response, e);

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverDto;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverVehicleListDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Driver;
 
 public class DriverController {
@@ -26,6 +27,10 @@ public class DriverController {
 
 	public void updateDriver(int driverId, String driverReference, Long driverPhone) {
 		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference, driverPhone));
+	}
+	
+	public Optional<DriverVehicleListDto> driverVehicles(int driverId) {
+		throw new java.lang.UnsupportedOperationException("Not implemented yet");
 	}
 
 	public Optional<DriverDto> getDriver(int driverId) {
