@@ -14,7 +14,20 @@ public class Vehicle {
 
 	public Vehicle() {
 	}
+	
+	public Vehicle(int id) {
+		this.id = id;
+	}
 
+
+	public Vehicle(int id, String brand, String model, Driver driver, Fuel fuel) {
+		this(id);
+		this.brand = brand;
+		this.model = model;
+		this.driver = driver;
+		this.fuel = fuel;
+	}
+	
 	public Vehicle(String brand, String model, Driver driver, Fuel fuel) {
 		this.brand = brand;
 		this.model = model;

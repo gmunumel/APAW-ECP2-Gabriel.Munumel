@@ -39,7 +39,7 @@ public class DriverDaoMemoryTest {
     } 
 
     @Test
-    public void testUpdateDriverReferencePhone() {  
+    public void testUpdateDriverReferencePhone() {   
     		DaoFactory.getFactory().getDriverDao().update(new Driver(1, "GHF1234", 123456789L));
         assertEquals("GHF1234", DaoFactory.getFactory().getDriverDao().get(1).getReference());
         assertEquals(123456789L, DaoFactory.getFactory().getDriverDao().get(1).getPhone(), 0);
