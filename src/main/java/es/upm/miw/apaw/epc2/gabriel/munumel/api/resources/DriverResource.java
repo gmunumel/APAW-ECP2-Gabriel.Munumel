@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers.DriverController;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverDto;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.DriverVehicleListDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverFieldInvalidException;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverIdNotFoundException;
 
@@ -12,6 +13,8 @@ public class DriverResource {
 	public static final String DRIVERS = "drivers";
 
 	public static final String ID = "/{id}";
+	
+	public static final String ID_VEHICLES = ID + "/vehicles";  
 
 	public DriverDto getDriver(int driverId) throws DriverIdNotFoundException {
 		Optional<DriverDto> optional = new DriverController().getDriver(driverId);
@@ -39,6 +42,11 @@ public class DriverResource {
 		this.validateField(driverReference);
 		new DriverController().updateDriver(driverId, driverReference, driverPhone);
 	}
+	
+	public DriverVehicleListDto getDriverVehicleList(int driverId) throws DriverIdNotFoundException {
+        Optional<DriverVehicleListDto> optional = new DriverController().driverVehicles(driverId);
+        return optional.orElseThrow(() -> new DriverIdNotFoundException(Integer.toString(driverId)));
+    }
 
 	private void validateField(String field) throws DriverFieldInvalidException {
 		if (field == null || field.isEmpty() || field.split(":")[0].isEmpty()) {

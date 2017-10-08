@@ -1,6 +1,5 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -8,7 +7,6 @@ import org.junit.Test;
 
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.memory.DaoMemoryFactory;
-import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Fuel;
 
 public class VehicleControllerIT {  
 
@@ -24,7 +22,7 @@ public class VehicleControllerIT {
 	public void testCreateVehicle() {
 		assertTrue(true);
 		// TODO
-		new DriverController().createDriver("1234XFG", 666666666L);
+//		new DriverController().createDriver("1234XFG", 666666666L);
 //		vehicleController.createVehicle("BMW", "T1000", 1, Fuel.GASOLINE);
 //		assertEquals("BMW", vehicleController.getVehicle(1).get().getBrand());
 //		assertEquals("T1000", vehicleController.getVehicle(1).get().getModel());
