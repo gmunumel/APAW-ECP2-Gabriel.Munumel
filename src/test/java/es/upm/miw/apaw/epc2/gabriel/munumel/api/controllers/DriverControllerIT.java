@@ -10,7 +10,7 @@ import org.junit.Test;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.DaoFactory;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.memory.DaoMemoryFactory;
 
-public class DriverControllerIT {
+public class DriverControllerIT {  
 
 	private DriverController driverController;
 
@@ -23,27 +23,27 @@ public class DriverControllerIT {
 
 	@Test
 	public void testCreateDriver() {
-		assertEquals("2345HFJ", driverController.readDriver(1).get().getReference());
-		assertEquals(777777777L, driverController.readDriver(1).get().getPhone(), 0);
+		assertEquals("2345HFJ", driverController.getDriver(1).get().getReference());
+		assertEquals(777777777L, driverController.getDriver(1).get().getPhone(), 0);
 	}
 
 	@Test
 	public void testReadDriverNonExistId() {
-		assertFalse(driverController.readDriver(2).isPresent());
+		assertFalse(driverController.getDriver(2).isPresent());
 	}
 
 	@Test
     public void testUpdateDriverReference() {
 		driverController.updateDriver(1, "FGHJ4567");
-		assertEquals("FGHJ4567", driverController.readDriver(1).get().getReference());
-		assertNull(driverController.readDriver(1).get().getPhone());
+		assertEquals("FGHJ4567", driverController.getDriver(1).get().getReference());
+		assertNull(driverController.getDriver(1).get().getPhone());
     }
 	
 	@Test
     public void testUpdateDriverReferencePhone() {
 		driverController.updateDriver(1, "FGHJ4567", 123456789L);
-		assertEquals("FGHJ4567", driverController.readDriver(1).get().getReference());
-		assertEquals(123456789L, driverController.readDriver(1).get().getPhone(), 0);
+		assertEquals("FGHJ4567", driverController.getDriver(1).get().getReference());
+		assertEquals(123456789L, driverController.getDriver(1).get().getPhone(), 0);
     }
  
 }

@@ -8,7 +8,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.daos.GenericDao;
 
 public abstract class GenericDaoMemory<T> implements GenericDao<T, Integer> {
 
-    private Map<Integer, T> map;
+    private Map<Integer, T> map;  
 
     private int id;
 
@@ -28,7 +28,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, Integer> {
     }
 
     @Override
-    public T read(Integer id) {
+    public T get(Integer id) {
         return map.get(id);
     }
 

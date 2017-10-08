@@ -26,7 +26,7 @@ public class DriverResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test
+    @Test  
     public void testCreateDriver() { 
         this.createDriverReferencePhone();
     }
@@ -56,7 +56,7 @@ public class DriverResourceFunctionalTesting {
     } 
     
     @Test
-    public void testReadDriver() {
+    public void testGetDriver() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
                 .expandPath("1").build();
@@ -64,7 +64,7 @@ public class DriverResourceFunctionalTesting {
     }
     
     @Test(expected = HttpException.class)
-    public void testReadDriverNotInteger() {
+    public void testGetDriverNotInteger() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
                 .expandPath("AAA").build();
@@ -72,7 +72,7 @@ public class DriverResourceFunctionalTesting {
     }
     
     @Test(expected = HttpException.class)
-    public void testReadDriverNotFound() {
+    public void testGetDriverNotFound() {
         this.testCreateDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(DriverResource.DRIVERS).path(DriverResource.ID)
                 .expandPath("999").build();

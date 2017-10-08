@@ -9,7 +9,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Driver;
 public class DriverController {
 
 	private boolean existDriverId(int driverId) {
-		return DaoFactory.getFactory().getDriverDao().read(driverId) != null;
+		return DaoFactory.getFactory().getDriverDao().get(driverId) != null;
 	}
 
 	public void createDriver(String driverReference) {
@@ -28,9 +28,9 @@ public class DriverController {
 		DaoFactory.getFactory().getDriverDao().update(new Driver(driverId, driverReference, driverPhone));
 	}
 
-	public Optional<DriverDto> readDriver(int driverId) {
+	public Optional<DriverDto> getDriver(int driverId) {
 		if (existDriverId(driverId)) {
-            return Optional.of(new DriverDto(DaoFactory.getFactory().getDriverDao().read(driverId)));
+            return Optional.of(new DriverDto(DaoFactory.getFactory().getDriverDao().get(driverId)));
         } else {
             return Optional.empty();
         }

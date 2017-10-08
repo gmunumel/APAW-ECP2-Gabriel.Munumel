@@ -18,7 +18,7 @@ public class Dispatcher {
 	public void doGet(HttpRequest request, HttpResponse response) {
 		try {
 			if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID)) {
-	            response.setBody(driverResource.readDriver(Integer.valueOf(request.paths()[1])).toString());
+	            response.setBody(driverResource.getDriver(Integer.valueOf(request.paths()[1])).toString());
 			}
 		} catch (Exception e) {
             responseError(response, e);
@@ -56,7 +56,7 @@ public class Dispatcher {
 					if (split.length == 2) {
 						String phone = request.getBody().split(":")[1];
 						driverResource.updateDriver(Integer.valueOf(request.paths()[1]), reference, Long.parseLong(phone));
-					} else 
+					} else   
 						driverResource.updateDriver(Integer.valueOf(request.paths()[1]), reference);		
 				} else
 					driverResource.updateDriver(Integer.valueOf(request.paths()[1]), request.getBody());
