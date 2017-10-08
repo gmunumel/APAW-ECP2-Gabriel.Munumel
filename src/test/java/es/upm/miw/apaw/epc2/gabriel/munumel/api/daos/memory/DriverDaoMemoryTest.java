@@ -27,7 +27,7 @@ public class DriverDaoMemoryTest {
     }
     
     @Test
-    public void testReadNonExistId() {
+    public void testGetNonExistId() {
         assertNull(DaoFactory.getFactory().getDriverDao().get(2));
     }
     
