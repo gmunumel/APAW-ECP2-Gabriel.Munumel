@@ -1,6 +1,9 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.api.resources;
 
+import java.util.List;
+
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.controllers.VehicleController;
+import es.upm.miw.apaw.epc2.gabriel.munumel.api.dtos.VehicleDto;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Fuel;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.DriverIdNotFoundException;
 import es.upm.miw.apaw.epc2.gabriel.munumel.api.resources.exceptions.VehicleFieldInvalidException;
@@ -18,6 +21,10 @@ public class VehicleResource {
         		throw new DriverIdNotFoundException(Integer.toString(driverId));
         }
 	}
+	
+	public List<VehicleDto> vehicleList() {
+		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+    }
 	
 	private void validateField(String vehicleBrand, String vehicleModel) throws VehicleFieldInvalidException {
         if (vehicleBrand == null || vehicleBrand.isEmpty()

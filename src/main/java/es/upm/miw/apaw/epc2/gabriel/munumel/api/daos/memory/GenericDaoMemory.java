@@ -53,4 +53,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, Integer> {
 
     protected abstract void setId(T entity, Integer id);
 
+    protected abstract Long getIdLong(T entity);
+
+    protected abstract void setIdLong(T entity, Long id);
 }

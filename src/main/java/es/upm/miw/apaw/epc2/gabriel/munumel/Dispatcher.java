@@ -25,12 +25,14 @@ public class Dispatcher {
 				response.setBody(driverResource.getDriver(Integer.valueOf(request.paths()[1])).toString());
 			} else if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID_VEHICLES)) {
 				response.setBody(driverResource.getDriverVehicleList(Integer.valueOf(request.paths()[1])).toString());
+			} else if (request.isEqualsPath(VehicleResource.VEHICLES)) {
+				response.setBody(vehicleResource.vehicleList().toString()); 
 			} else {
                 throw new RequestInvalidException(request.getPath());
             }
 		} catch (Exception e) {
 			responseError(response, e);
-		}
+		}  
 	}
 
 	public void doPost(HttpRequest request, HttpResponse response) {
