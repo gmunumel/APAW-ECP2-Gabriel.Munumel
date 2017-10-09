@@ -22,8 +22,8 @@ public class VehicleResource {
         }
 	}
 	
-	public List<VehicleDto> vehicleList() {
-		throw new java.lang.UnsupportedOperationException("Not implemented yet");
+	public List<VehicleDto> vehicleList() {  
+		return new VehicleController().vehicleList();
     }
 	
 	private void validateField(String vehicleBrand, String vehicleModel) throws VehicleFieldInvalidException {
