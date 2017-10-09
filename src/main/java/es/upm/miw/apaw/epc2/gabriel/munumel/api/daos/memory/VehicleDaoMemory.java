@@ -9,8 +9,8 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Vehicle;
 
 public class VehicleDaoMemory extends GenericDaoMemory<Vehicle> implements VehicleDao {
 
-	public VehicleDaoMemory() {
-		this.setMap(new HashMap<Integer, Vehicle>());
+	public VehicleDaoMemory() { 
+		this.setMap(new HashMap<Integer, Vehicle>());  
 	}
 
 	@Override

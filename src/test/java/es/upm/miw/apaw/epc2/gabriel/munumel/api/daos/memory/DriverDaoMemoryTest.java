@@ -21,7 +21,7 @@ public class DriverDaoMemoryTest {
     }
 
     @Test
-    public void testCreateDriver() {
+    public void testCreateDriver() {  
         assertEquals("1234GHF", DaoFactory.getFactory().getDriverDao().get(1).getReference());
         assertEquals(666666666L, DaoFactory.getFactory().getDriverDao().get(1).getPhone(), 0);
     }

@@ -1,5 +1,7 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,19 +16,38 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpRequest;
 import es.upm.miw.apaw.epc2.gabriel.munumel.http.HttpRequestBuilder;
 
 public class VehicleResourceFunctionalTesting {
-
+	
     @Before
     public void before() { 
-        DaoFactory.setFactory(new DaoMemoryFactory());
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS)
+    		DaoFactory.setFactory(new DaoMemoryFactory());       
+    }
+    
+    private void createDriver() {
+    		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(DriverResource.DRIVERS)
         		.body("1234XYZ:666666666").build();
         new HttpClientService().httpRequest(request);
     }
 
     private void createVehicleBrandModelDriverIdEnum() {
+    		this.createDriver();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
         		.body("BMW:T1000:1:GASOLINE").build();
         new HttpClientService().httpRequest(request);
+    }
+    
+    private void createVehicles() {
+        this.createDriver();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
+        		.body("BMW:T1000:1:GASOLINE").build();
+        new HttpClientService().httpRequest(request);
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
+        		.body("Mercedes:CLQ:1:DIESEL").build();
+        new HttpClientService().httpRequest(request);
+    }
+    
+    @Test
+    public void testCreateVehicles() {
+        this.createVehicles();
     }
 
     @Test
@@ -74,6 +95,14 @@ public class VehicleResourceFunctionalTesting {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(VehicleResource.VEHICLES)
         		.body("").build();
         new HttpClientService().httpRequest(request);
-    }
+    } 
     
+    @Test
+    public void testVehicleList() {
+        this.createVehicles();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(VehicleResource.VEHICLES).build();
+        assertEquals("[{\"id\":1,\"brand\":\"BMW\",\"model\":\"T1000\",\"driver\":1,\"fuel\":\"GASOLINE\"}, "
+        			   + "{\"id\":2,\"brand\":\"Mercedes\",\"model\":\"CLQ\",\"driver\":1,\"fuel\":\"DIESEL\"}]",
+                new HttpClientService().httpRequest(request).getBody());
+    }
 }
