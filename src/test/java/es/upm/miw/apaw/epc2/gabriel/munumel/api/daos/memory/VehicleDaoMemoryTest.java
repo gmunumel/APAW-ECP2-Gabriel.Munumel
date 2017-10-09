@@ -30,5 +30,11 @@ public class VehicleDaoMemoryTest {
         assertEquals("T1000", DaoFactory.getFactory().getVehicleDao().get(1).getModel());
         assertNotNull(DaoFactory.getFactory().getVehicleDao().get(1).getDriver());
         assertEquals(Fuel.GASOLINE, DaoFactory.getFactory().getVehicleDao().get(1).getFuel());
-    } 
+    }  
+    
+    @Test
+    public void testFindAll() {
+        DaoFactory.getFactory().getVehicleDao().create(new Vehicle("BMW", "T1000", driver, Fuel.GASOLINE));
+        assertEquals(2, DaoFactory.getFactory().getVehicleDao().findAll().size());
+    }
 }
