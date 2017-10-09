@@ -22,7 +22,7 @@ public class VehicleResource {
         }
 	}
 	
-	public List<VehicleDto> vehicleList() {  
+	public List<VehicleDto> vehicleList() {   
 		return new VehicleController().vehicleList();
     }
 	

@@ -5,7 +5,7 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Vehicle;
 
 public class VehicleDto {
 
-    private Long id;
+    private int id;
 
     private String brand;
     
@@ -26,11 +26,11 @@ public class VehicleDto {
         this.fuel = vehicle.getFuel();
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

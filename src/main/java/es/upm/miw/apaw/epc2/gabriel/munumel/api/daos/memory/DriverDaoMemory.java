@@ -13,7 +13,7 @@ public class DriverDaoMemory extends GenericDaoMemory<Driver> implements DriverD
 
     @Override
     protected Integer getId(Driver entity) {
-        return entity.getId();
+        return entity.getId(); 
     }
 
     @Override
@@ -21,14 +21,5 @@ public class DriverDaoMemory extends GenericDaoMemory<Driver> implements DriverD
         entity.setId(id);  
 
     }
-
-	@Override
-	protected Long getIdLong(Driver entity) {
-		return -1L;
-	}
-
-	@Override
-	protected void setIdLong(Driver entity, Long id) {
-	}
 
 }

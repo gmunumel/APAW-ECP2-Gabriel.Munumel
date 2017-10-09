@@ -2,7 +2,7 @@ package es.upm.miw.apaw.epc2.gabriel.munumel.api.entities;
 
 public class Vehicle {
 
-	private Long id;
+	private int id;
 
 	private String brand;
 
@@ -15,12 +15,12 @@ public class Vehicle {
 	public Vehicle() {
 	}
 	
-	public Vehicle(Long id) {
+	public Vehicle(int id) {
 		this.id = id;
 	}
 
 
-	public Vehicle(Long id, String brand, String model, Driver driver, Fuel fuel) {
+	public Vehicle(int id, String brand, String model, Driver driver, Fuel fuel) {
 		this(id);
 		this.brand = brand;
 		this.model = model;
@@ -35,11 +35,11 @@ public class Vehicle {
 		this.fuel = fuel;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

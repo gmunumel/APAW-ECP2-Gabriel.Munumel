@@ -19,7 +19,7 @@ public class Dispatcher {
 		response.setStatus(HttpStatus.BAD_REQUEST);
 	}
 
-	public void doGet(HttpRequest request, HttpResponse response) {
+	public void doGet(HttpRequest request, HttpResponse response) { 
 		try {
 			if (request.isEqualsPath(DriverResource.DRIVERS + DriverResource.ID)) {
 				response.setBody(driverResource.getDriver(Integer.valueOf(request.paths()[1])).toString());

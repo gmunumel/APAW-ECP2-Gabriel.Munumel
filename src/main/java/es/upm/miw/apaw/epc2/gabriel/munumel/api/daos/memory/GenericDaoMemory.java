@@ -45,15 +45,12 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, Integer> {
     }
 
     @Override
-    public List<T> findAll() {
+    public List<T> findAll() { 
         return new ArrayList<>(map.values());
     }
 
     protected abstract Integer getId(T entity);
 
     protected abstract void setId(T entity, Integer id);
-
-    protected abstract Long getIdLong(T entity);
-
-    protected abstract void setIdLong(T entity, Long id);
+    
 }

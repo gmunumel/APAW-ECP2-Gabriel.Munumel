@@ -9,26 +9,17 @@ import es.upm.miw.apaw.epc2.gabriel.munumel.api.entities.Vehicle;
 
 public class VehicleDaoMemory extends GenericDaoMemory<Vehicle> implements VehicleDao {
 
-	public VehicleDaoMemory() {
+	public VehicleDaoMemory() { 
 		this.setMap(new HashMap<Integer, Vehicle>());  
 	}
 
 	@Override
 	protected Integer getId(Vehicle entity) {
-		return -1;
-	}
-
-	@Override
-	protected void setId(Vehicle entity, Integer id) {
-	}
-	
-	@Override
-	protected Long getIdLong(Vehicle entity) {
 		return entity.getId();
 	}
 
 	@Override
-	protected void setIdLong(Vehicle entity, Long id) {
+	protected void setId(Vehicle entity, Integer id) {
 		entity.setId(id);
 	}
 
