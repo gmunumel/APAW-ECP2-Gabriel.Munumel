@@ -90,7 +90,7 @@ public class Dispatcher {
 		throw new java.lang.UnsupportedOperationException("Not implemented yet");
 	}
 
-	private String splitBy(int position, String string) { // asd:asd:asd / :asd:asd / asd::asd / asd:asd:
+	private String splitBy(int position, String string) {
 		StringBuilder result = new StringBuilder();
 		char[] chars = string.toCharArray();
 		int countPos = -1;
