@@ -1,6 +1,6 @@
 package es.upm.miw.apaw.epc2.gabriel.munumel.http;
 
-import es.upm.miw.apaw.theme.api.Dispatcher;
+import es.upm.miw.apaw.epc2.gabriel.munumel.Dispatcher;
 
 public class Server {
     private Dispatcher dispatcher = new Dispatcher();
